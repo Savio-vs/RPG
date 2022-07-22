@@ -10,7 +10,7 @@ x=-1
 while x!=0:
     print("################################")
     print("1-Criar novo Personagem:")
-    print("2-Deletar personagem")
+    print("2-Listar Personagens:")
     print("3-Adicionar XP:")
     print("0-Sair:")
     print("################################")
@@ -19,7 +19,7 @@ while x!=0:
         Criar_classe(listaPersonagens)
     
     elif x==2:
-        pass
+        listaPersonagens.imprimir()
     
     elif x==3:
         Ganho_XP(listaPersonagens)
