@@ -23,6 +23,25 @@ class Raiz:
                 print(item.nome)
         else:
             print("ocorreu um erro!!")
+   
+    def buscar_personagem(self,nome):
+        id = self.root
+        if id.nome == nome:
+            print("Atributos de ",id.nome,"\n",id.id) # .id  é um objeto da classe personagem 
+        else:
+            id = id.next
+            id.buscar_personagem(nome)
+           
+    #adicionar um valor de xp ao personagem
+    def Upper(self,nome,xp):
+        personagem = self.root
+        if personagem.nome == nome:
+            ganha_xp =personagem.id
+            ganha_xp._up(xp)
+        
+        else:
+            personagem.next.Upper(nome,xp)    
+
 
 def add(end, id ,nome,back):
     if end.root != None:
