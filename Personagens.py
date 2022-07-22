@@ -27,7 +27,8 @@ class Raiz:
     def buscar_personagem(self,nome):
         id = self.root
         if id.nome == nome:
-            print("Atributos de ",id.nome,"\n",id.id) # .id  é um objeto da classe personagem 
+            print("##############################")
+            print("Personagem: ",id.nome,"\n",id.id) # .id  é um objeto da classe personagem 
         else:
             id = id.next
             id.buscar_personagem(nome)
