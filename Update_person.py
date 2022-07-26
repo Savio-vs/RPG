@@ -1,14 +1,24 @@
 from Lista_Personagens import *
+
 class AlterPerson :
-    def __init__(self,lvl,xp,forc,con,des,int,pt) -> None:
-        self.int = int
+    def __init__(self,classe,nv,xp,forc,con,des,int,pontos):
+        self.classe = classe
+        self.lvl = nv
+        self.xp = xp
+        self.intel = int
         self.des = des
         self.forc = forc
-        self.con = con 
-        self.xp = xp
-        self.lvl = lvl
-        self.pontos = pt
-        
+        self.con = con
+        self.pontos = pontos
+        self.vida , self.poder = self._attr()
+    
+    def busca (self):
+        print ("%s nv.%s  %sxp\n\
+HP:%s       Power:%s\n\
+For:%s      Con:%s\n\
+Des:%s      Int:%s\n\
+Pontos:%s" %(self.classe,self.lvl,self.xp,self.vida,self.poder,self.forc,self.con,self.des,self.intel,self.pontos))
+
     # incremento de XP 
     def _up (self,valor):
         xp_up = self.lvl * 100
@@ -34,20 +44,26 @@ class AlterPerson :
 
 class UpBarbaro(AlterPerson):
     def _attr(self):
-        return (self.forca * 2  + self.consistencia*10), (self.forca *10 + int(self.consistencia/2) + int(self.destreza/2))
+        return (self.forc * 2  + self.con*10), (self.forc *10 + int(self.con/2) + int(self.des/2))
     
     def __str__(self) -> str:
-        return 0
-
+        return "Barbaro;%s;%s;%s;%s;%s;%s;%s;%s;%s;"\
+            %(self.lvl,self.xp,self.vida,self.poder,self.forc,self.con,self.des,self.intel,self.pontos)
+    
+    
 class UpLadino(AlterPerson):
     def _attr(self):
-        return (self.forca * 2  + self.consistencia*10), (self.forca *10 + int(self.consistencia/2) + int(self.destreza/2))
+        return (self.forc * 2  + self.con*10), (self.forc *10 + int(self.con/2) + int(self.des/2))
     
     def __str__(self) -> str:
-        return 0
-class UpMago():
+        return "Ladino;%s;%s;%s;%s;%s;%s;%s;%s;%s;"\
+            %(self.lvl,self.xp,self.vida,self.poder,self.forc,self.con,self.des,self.intel,self.pontos)
+    
+
+class UpMago(AlterPerson):
     def _attr(self):
-        return (self.forca * 2  + self.consistencia*10), (self.inteligencia*10 + self.destreza*2)
+        return (self.forc * 2  + self.con*10), (self.intel*10 + self.des*2)
     
     def __str__(self) -> str:
-        return 0
+        return "Mago;%s;%s;%s;%s;%s;%s;%s;%s;%s;"\
+            %(self.lvl,self.xp,self.vida,self.poder,self.forc,self.con,self.des,self.intel,self.pontos)

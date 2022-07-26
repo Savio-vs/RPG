@@ -12,26 +12,33 @@ class Raiz:
         self.root = None
         self.next = None
         self.back = None
+    
     def imprimir (self): # lista os personagens criados 
-        if self.root != None:
-            item = self.root
-            if item.next != None:
-                next = item.next
-                next.imprimir()
-                print(item.nome)
-            else:
-                print(item.nome)
+        personagem = self.root
+        if personagem.next != None:
+            id = personagem.id
+            print("\t",personagem.nome,"--", id.classe,"Nv.", id.lvl)
+            personagem =  personagem.next
+            personagem.imprimir()
+    
         else:
-            print("ocorreu um erro!!")
+            id = personagem.id
+            print("\t",personagem.nome,"--", id.classe,"Nv.", id.lvl ,"\n")
+            
    
     def buscar_personagem(self,nome):
         id = self.root
         if id.nome == nome:
             print("##############################")
-            print("Personagem: ",id.nome,"\n",id.id) # .id  é um objeto da classe personagem 
-        else:
+            print("Personagem: ",id.nome) 
+            objeto=id.id                    # .id  é um objeto da classe personagem 
+            objeto.busca()
+            print("##############################")
+        elif id.nome != nome and id.next != None:
             id = id.next
             id.buscar_personagem(nome)
+        else:
+            print("\nPersonogem não existe:\n\n")
            
     #adicionar um valor de xp ao personagem
     def Upper(self,nome,xp):
