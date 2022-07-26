@@ -1,6 +1,6 @@
 from Classes import *
-from Personagens import *
-def Criar_classe(listaPersonagem):
+from Lista_Personagens import *
+def Classe_inicial(listaPersonagem):
     print("\n################################")
     nome = input("Nome do personagem:")
    
@@ -15,30 +15,25 @@ def Criar_classe(listaPersonagem):
    #################### corrigir o armazenamento dos objetos ######################
     if classe==1:
         id = Barbaro()  
-        with open ("RPG/lista.txt","a") as arq:
-            arq.write("======================================\n")
-            arq.write("Nome: " + nome +"    ")
-            arq.write(str(id) +"\n")
+        with open ("lista.csv","a") as arq:
+            arq.write('\n'+nome +";")
+            arq.write(str(id))
             
         add(listaPersonagem,id,nome,None)
 
     elif classe ==2:
         id = Ladino()
-        with open ("RPG/lista.txt","a") as arq:
-            arq.write("======================================\n")
-            arq.write("ID" + id +"\n")
-            arq.write("Nome: " + nome + "   ")
-            arq.write("Ladino ")
+        with open ("lista.csv","a") as arq:
+            arq.write('\n'+nome +";")
+            arq.write(str(id))
 
         add(listaPersonagem,id,nome,None)
     
     elif classe ==3:
         id = Mago()
-        with open ("RPG/lista.txt","a") as arq:
-            arq.write("======================================\n")
-            arq.write("ID" + str(id)+"\n")
-            arq.write("Nome: " + nome + "   ")
-            arq.write("Mago ")
+        with open ("lista.csv","a") as arq:
+            arq.write('\n'+nome +";")
+            arq.write(str(id))
         
         add(listaPersonagem,id,nome,None)
     

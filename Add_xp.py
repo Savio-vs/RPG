@@ -1,5 +1,5 @@
 
-from Personagens import *
+from Lista_Personagens import *
 def Ganho_XP(listaPersonagens):
     nome = input("Nome do personagem:")
     xp = int(input("xp ganha:"))

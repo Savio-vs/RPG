@@ -35,16 +35,16 @@ class Raiz:
            
     #adicionar um valor de xp ao personagem
     def Upper(self,nome,xp):
-        personagem = self.root
-        if personagem.nome == nome:
-            ganha_xp =personagem.id
-            ganha_xp._up(xp)
+        personagem = self.root 
+        if personagem.nome == nome: # verifica é o personagem escolhido
+            ganha_xp =personagem.id # ganha_xp se torna uma referencia para o objeto instanciado de personagem
+            ganha_xp._up(xp)        # _up() é um metodo da classe personagem
         
         else:
-            personagem.next.Upper(nome,xp)    
+            personagem.next.Upper(nome,xp)    # busca o proximo personagem na lista encadeada
 
-
-def add(end, id ,nome,back):
+# Adicionando um persogem a lista encadeado de execução
+def add(end, id ,nome,back):  
     if end.root != None:
         item = end.root
         if item.next != None:
