@@ -28,8 +28,9 @@ while x!=0:
     print("################################")
     print("1-Criar novo Personagem:")
     print("2-Procurar Personagem:")
-    print("3-Adicionar XP:")
-    print("4-Listar Todos Personagens:")
+    print("3-Listar Todos Personagens:")
+    print("4-Adicionar XP:")
+    print("5-Destribuir Pontos de talento:")
     print("0-Sair:")
     print("################################")
     x= int(input())
@@ -43,14 +44,18 @@ while x!=0:
         listaPersonagens.buscar_personagem(input("Nome do personagem desejado:"))
     
     # Adicionar XP a um personagem    
-    elif x==3:
+    elif x==4:
         Ganho_XP(listaPersonagens)
     
     #Listar todos os personagenm
-    elif x==4:
+    elif x==3:
         print("################################")
         listaPersonagens.imprimir()
 
+    elif x==5:
+        nome = input("Qual personagem?\n")
+        listaPersonagens.buscar_nome(nome)
+        
     elif x==0:
         break
     else:

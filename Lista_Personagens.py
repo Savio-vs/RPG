@@ -25,15 +25,26 @@ class Raiz:
             id = personagem.id
             print("\t",personagem.nome,"--", id.classe,"Nv.", id.lvl ,"\n")
             
-   
+    def buscar_nome(self,nome):
+        id = self.root
+        if id.nome == nome:
+            buscar  = id.id
+            buscar._destribuirPontos()
+
+        elif id.nome != nome and id.next != None:
+            id = id.next
+            id.buscar_nome(nome)
+        else:
+             print("\nPersonogem não existe:\n\n")
+
     def buscar_personagem(self,nome):
         id = self.root
         if id.nome == nome:
-            print("##############################")
-            print("Personagem: ",id.nome) 
+            print("\n##############################")
+            print("Personagem:",id.nome) 
             objeto=id.id                    # .id  é um objeto da classe personagem 
             objeto.busca()
-            print("##############################")
+            print("##############################\n")
         elif id.nome != nome and id.next != None:
             id = id.next
             id.buscar_personagem(nome)
@@ -43,13 +54,28 @@ class Raiz:
     #adicionar um valor de xp ao personagem
     def Upper(self,nome,xp):
         personagem = self.root 
-        if personagem.nome == nome: # verifica é o personagem escolhido
+           
+        if personagem.nome == nome: # verifica se é o personagem escolhido
             ganha_xp =personagem.id # ganha_xp se torna uma referencia para o objeto instanciado de personagem
-            ganha_xp._up(xp)        # _up() é um metodo da classe personagem
+            ptl = ganha_xp._up(xp)        # _up() é um metodo da classe personagem
+            
+            print(ptl,"pontos livres")
+            if ptl > 0 :
+                descisao  = input("Você tem pontos de Talentos para serem distribuidos, deseja fazer isso agora ?\nY/N :").upper()
+                if descisao == 'Y':
+                    ganha_xp._destribuirPontos()
+                
+                elif descisao == 'N':
+                    exit
+                
+                else:
+                    print("Entrada invalida:")
         
-        else:
+        elif personagem.nome != nome and personagem.next != None:
             personagem.next.Upper(nome,xp)    # busca o proximo personagem na lista encadeada
 
+        else:
+            print("\n\tPersonagem não encontrado:\n\tVerifique se escreveu no nome corretamente:\n")
 # Adicionando um persogem a lista encadeado de execução
 def add(end, id ,nome,back):  
     if end.root != None:
