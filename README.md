@@ -13,8 +13,11 @@ As opções abaixo estão funcionais, e os dados estão sendo armazenados em um 
 ################################<br>
 </p>
 As seguintes opções serão futuramente implementadas:<br>
+
+################################<br>
 -Exigir senha para criação e modificações em um personagem.<br>
 -Adicionar item a personagem.<br>
 -Deletar personagem.<br>
+################################<br>
 
 
