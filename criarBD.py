@@ -96,14 +96,14 @@ def select (nome):
     cur = bd.cursor()
 
     item = '"'+nome+'"'
-    sql_select = 'select p.ID, p.classe ,p.level, p.xp, p.for, p.con, p.des, p.intel, p.pontos\
+    sql_select = 'select p.ID, p.classe ,p.level, p.xp,xp_up, p.for, p.con, p.des, p.intel, p.pontos\
                 from personagem as p \
                     where p.nome = '
     
     sql_select+=item
     cur.execute(sql_select)
     for lista in cur.fetchall():
-        return [lista[1],lista[2],lista[3],lista[4],lista[5],lista[6],lista[7],lista[8],lista[0]]
+        return [lista[1],lista[2],lista[3],lista[4],lista[5],lista[6],lista[7],lista[8],lista[9],lista[0]]
     cur.close()
     bd.close()
 

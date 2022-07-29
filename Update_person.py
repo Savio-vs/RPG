@@ -1,11 +1,11 @@
 from Lista_Personagens import *
 
 class AlterPerson :
-    def __init__(self,classe,nv,xp,forc,con,des,int,pontos):
+    def __init__(self,classe,nv,xp,xp_up,forc,con,des,int,pontos):
         self.classe = classe
         self.lvl = nv
         self.xp = xp
-        self.xp_up =  self.lvl * 100
+        self.xp_up =  xp_up
         self.intel = int
         self.des = des
         self.forc = forc
@@ -37,10 +37,10 @@ class AlterPerson :
         if self.pontos > 0 :
             return self.pontos
         else:
-            print("Não tem pontos de talento:")
+            print("\nVocê não tem pontos de talento para distribuir:\n")
         
     
-    def _destribuirPontos(self,classe):
+    def _destribuirPontos(self,id):
         while self.pontos != 0:
             print("\n################################")
             print("\nVocê tem %d pontos de talento:\nOnde deseja colocalos?\n"%(self.pontos))
@@ -63,16 +63,17 @@ class AlterPerson :
                 self.pontos -=valor
             else:
                 print("insira um valor valido:")
-
-        if classe == 'Barbaro':
-            self.vida , self.poder = UpBarbaro._attr()
+        self.vida , self.poder = id._attr()
+        '''if classe == 'Barbaro':
+            self.vida , self.poder = id._attr()
         elif classe == 'Ladino':
             self.vida , self.poder = UpLadino._attr()
         elif classe == 'Mago':
             self.vida , self.poder = UpMago._attr()
         else:
-            print("não recebi a classe certa!!!")
+            print("não recebi a classe certa!!!")'''
         print("\nNão Existe mais pontos a serem destribuidos:\n")
+
 class UpBarbaro(AlterPerson):
     def _attr(self):
         return (self.forc * 2  + self.con*10), (self.forc *10 + int(self.con/2) + int(self.des/2))

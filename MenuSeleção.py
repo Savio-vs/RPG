@@ -43,11 +43,11 @@ while x!=0:
 
     #adicionar XP ao personagem4 OK!!!!
     elif x==4:
-        Ganho_XP()
+        Ganho_XP(x)
     
-    # distribuir pontos de talentos
+    # distribuir pontos de talentos OK!!!
     elif x==5:
-        nome = input("Qual personagem?\n")
+        Ganho_XP(x)
         
         
     elif x==0:
