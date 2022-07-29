@@ -9,6 +9,7 @@ class Personagem :
         self.con = 5 
         self.xp_atual = 0
         self.lvl = 1
+        self.xp_up = self.lvl*100
         self.pontos =0
         self.vida,self.poder = self._attr()
     
@@ -22,6 +23,9 @@ For:%s      Con:%s\n\
 Des:%s      Int:%s\n\
 Pontos:%s" %(self.classe,self.lvl,self.xp_atual,self.vida,self.poder,self.forc,self.con,self.des,self.intel,self.pontos))
 
+    def lista (self):
+        return [self.classe,self.lvl,self.xp_atual,self.xp_up,self.vida,self.poder,self.forc,self.con,self.des,self.intel,self.pontos]
+        
 class Barbaro(Personagem):
     def _attr(self):
         return (self.forc * 2  + self.con*10), (self.forc *10 + int(self.con/2) + int(self.des/2))

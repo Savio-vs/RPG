@@ -1,20 +1,15 @@
 from Classes import *
-from Lista_Personagens import *
-def Classe_inicial(listaPersonagem):
-    x = True
-    while x :
-        x = False
-        busca = open("lista.csv","r")
-        print("\n################################")
-        nome = input("Nome do personagem:")
-        print("################################")
-        for linha in busca:
-            linha = linha.split(';')
-            if linha[0] == nome:
-                print ("\nNome já cadastrado.\nTente tente novamente.")
-                x = True
-                break
-        
+from criarBD import *
+import sqlite3 
+def Classe_inicial():
+    
+    valor = 1
+    while valor ==1:
+        nome = input("Digite o nome:")
+        valor = scan(nome)
+        if valor == 1 :
+            print("Nome já criado:\nTente novamente.")
+
     
     print("\n################################")
     print("Escolha sua classe:")
@@ -27,27 +22,24 @@ def Classe_inicial(listaPersonagem):
    #################### corrigir o armazenamento dos objetos ######################
     if classe==1:
         id = Barbaro('Barbaro')  
-        with open ("lista.csv","a") as arq:
-            arq.write('\n'+nome +";")
-            arq.write(str(id))
-            
-        add(listaPersonagem,id,nome,None)
+        lista = [nome]
+        lista += id.lista()
+        insert(lista)    
+        
 
     elif classe ==2:
         id = Ladino('Ladino')
-        with open ("lista.csv","a") as arq:
-            arq.write('\n'+nome +";")
-            arq.write(str(id))
-
-        add(listaPersonagem,id,nome,None)
+        lista = [nome]
+        lista += id.lista()
+        insert(lista)
+        
     
     elif classe ==3:
         id = Mago('Mago')
-        with open ("lista.csv","a") as arq:
-            arq.write('\n'+nome +";")
-            arq.write(str(id))
+        lista = [nome]
+        lista += id.lista()
+        insert(lista)
         
-        add(listaPersonagem,id,nome,None)
     
     else:
         print("Escolha de classe incorreta:\nTente novamente")

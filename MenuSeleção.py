@@ -1,27 +1,14 @@
-from Lista_Personagens import *
+from telnetlib import GA
 from Classes import*
 from ClasseInicial import*
 from Add_xp import*
 from Update_person import *
-
+from criarBD import *
 ######## Menu Inicial #########
 
 listaPersonagens = Raiz()
 x=-1
 
-for linha in open("lista.csv","r"):
-    linha = linha.split(';')
-    if linha[1] == 'Barbaro':
-        id =UpBarbaro(linha[1],int(linha[2]),int(linha[3]),int(linha[6]),int(linha[7]),int(linha[8]),int(linha[9]),int(linha[10]))
-        add(listaPersonagens,id,linha[0],None)
-    
-    elif linha[1] =='Ladino':
-        id =UpLadino(linha[1],int(linha[2]),int(linha[3]),int(linha[6]),int(linha[7]),int(linha[8]),int(linha[9]),int(linha[10]))
-        add(listaPersonagens,id,linha[0],None)
-    
-    elif linha[1] == 'Mago':
-        id =UpMago(linha[1],int(linha[2]),int(linha[3]),int(linha[6]),int(linha[7]),int(linha[8]),int(linha[9]),int(linha[10]))
-        add(listaPersonagens,id,linha[0],None)
     
 # Menu de açôes.
 while x!=0:
@@ -35,26 +22,33 @@ while x!=0:
     print("################################")
     x= int(input())
     
-    #criar personagem
+    #criar personagem  OK!!!
     if x == 1:
-        Classe_inicial(listaPersonagens)
+        Classe_inicial()
     
-    #procurar personagem
+    #procurar personagem OK!!!
     elif x==2:
-        listaPersonagens.buscar_personagem(input("Nome do personagem desejado:"))
-    
-    # Adicionar XP a um personagem    
-    elif x==4:
-        Ganho_XP(listaPersonagens)
-    
-    #Listar todos os personagenm
-    elif x==3:
-        print("################################")
-        listaPersonagens.imprimir()
+        nome = (input("Nome do personagem desejado:"))
+        valor = scan(nome)
+        if valor != 1:
+            print("\nPersonagem não existe:\n")
+        else:    
+            buscar(nome)
 
+    #Listar todos os personagenm OK!!!
+    elif x==3:
+        print("\n###Lista de Personagens:###")
+        buscar_tds()
+        print("\n")
+
+    #adicionar XP ao personagem4 OK!!!!
+    elif x==4:
+        Ganho_XP()
+    
+    # distribuir pontos de talentos
     elif x==5:
         nome = input("Qual personagem?\n")
-        listaPersonagens.buscar_nome(nome)
+        
         
     elif x==0:
         break
